@@ -18,6 +18,41 @@
         </q-tr>
       </template>
     </q-grid>
+
+    <q-grid :row_key="'id'"  :data="data" :columns="columns" :columns_filter="true" :draggable="true" selection="single"
+            :csv_download="true" file_name="sample" :groupby_filter="true"
+            :selected="selected"
+            @selected-val="GetSelected($event)">
+      <template v-slot:header="props">
+        <q-tr :props="props">
+          <q-th auto-width></q-th>
+          <q-th
+            v-for="col in props.cols"
+            class="text-italic text-purple"
+          >
+            {{ col.label }}
+          </q-th>
+        </q-tr>
+      </template>
+    </q-grid>
+
+    <q-grid :data="data" :columns="columns" :columns_filter="true" :draggable="true" selection="single"
+            :csv_download="true" file_name="sample" :groupby_filter="true"
+            :selected="selected"
+            @selected-val="GetSelected($event)">
+      <template v-slot:header="props">
+        <q-tr :props="props">
+          <q-th auto-width></q-th>
+          <q-th
+            v-for="col in props.cols"
+            class="text-italic text-purple"
+          >
+            {{ col.label }}
+          </q-th>
+        </q-tr>
+      </template>
+    </q-grid>
+
     {{selected}}
   </q-page>
 </template>
@@ -71,17 +106,19 @@ const data = [
     protein: 4.0,
     sodium: 87,
     calcium: '14%',
-    iron: '1%'
+    iron: '1%',
+    id:'1'
   },
   {
-    name: 'Ice cream sandwich',
+    name: 'Frozen Yogurt',
     calories: 237,
     fat: 9.0,
     carbs: 37,
     protein: 4.3,
     sodium: 129,
     calcium: '8%',
-    iron: '1%'
+    iron: '1%',
+    id:'2'
   },
   {
     name: 'Eclair',
@@ -91,7 +128,8 @@ const data = [
     protein: 6.0,
     sodium: 337,
     calcium: '6%',
-    iron: '7%'
+    iron: '7%',
+    id:'3'
   },
   {
     name: 'Cupcake',
@@ -101,7 +139,8 @@ const data = [
     protein: 4.3,
     sodium: 413,
     calcium: '3%',
-    iron: '8%'
+    iron: '8%',
+    id:'4'
   },
   {
     name: 'Gingerbread',
@@ -111,7 +150,8 @@ const data = [
     protein: 3.9,
     sodium: 327,
     calcium: '7%',
-    iron: '16%'
+    iron: '16%',
+    id:'5'
   },
   {
     name: 'Jelly bean',
@@ -121,7 +161,8 @@ const data = [
     protein: 0.0,
     sodium: 50,
     calcium: '0%',
-    iron: '0%'
+    iron: '0%',
+    id:'6'
   },
   {
     name: 'Lollipop',
@@ -131,7 +172,8 @@ const data = [
     protein: 0,
     sodium: 38,
     calcium: '0%',
-    iron: '2%'
+    iron: '2%',
+    id:'7'
   },
   {
     name: 'Honeycomb',
@@ -141,7 +183,8 @@ const data = [
     protein: 6.5,
     sodium: 562,
     calcium: '0%',
-    iron: '45%'
+    iron: '45%',
+    id:'8'
   },
   {
     name: 'Donut',
@@ -151,7 +194,8 @@ const data = [
     protein: 4.9,
     sodium: 326,
     calcium: '2%',
-    iron: '22%'
+    iron: '22%',
+    id:'9'
   },
   {
     name: 'KitKat',
@@ -161,7 +205,8 @@ const data = [
     protein: 7,
     sodium: 54,
     calcium: '12%',
-    iron: '6%'
+    iron: '6%',
+    id:'10'
   }
 ]
 export default defineComponent({
